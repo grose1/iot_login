@@ -13,7 +13,7 @@ driver = webdriver.Chrome('chromedriver.exe')
 driver.get(http + ip)
 
 
-# driver.get("https://www.python.org")
+
 frame = driver.find_element_by_css_selector('iframe')
 driver.switch_to.frame(frame)
 
