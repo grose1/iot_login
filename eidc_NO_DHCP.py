@@ -1,19 +1,20 @@
 # This python script will log in to Infinias Access Control device and change the IP address
-# This version also disables dhcp
+# DHCP must previously be turned off on controller for this to work.
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
+# Get IP and Log in info
 ip = input('Enter Device IP:')
 u = input('Enter username:')
 p = input('Enter Password:')
 
 # New IP Info
-
 newip = input('Enter Change IP:')
 sub = input('Enter Subnet Mask')
 gate = input('Enter Gateway')
+
 
 http = 'http://'
 driver = webdriver.Chrome('chromedriver.exe')
@@ -40,9 +41,6 @@ driver.find_element_by_id('cmdControllers').click()
 time.sleep(.5)
 driver.find_element_by_id('cmdModify').click()
 time.sleep(.5)
-
-# Disable DHCP
-driver.find_element_by_id('chkUseDHCP').click()
 
 # Input New IP Address
 chgip = driver.find_element_by_id('txtIPAddress')
